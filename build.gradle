@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+}
+
+group = 'sia'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+testing {
+    suites {
+        test {
+            useJUnitJupiter("5.10.0")
+
+            dependencies {
+                implementation 'org.junit.jupiter:junit-jupiter'
+                implementation 'com.codeborne:selenide:7.13.0'
+                implementation "org.aeonbits.owner:owner:1.0.12"
+                implementation "io.rest-assured:rest-assured:6.0.0"
+                implementation "com.fasterxml.jackson.core:jackson-databind:2.20.1"
+                implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.18.2'
+                compileOnly "org.projectlombok:lombok:1.18.42"
+                annotationProcessor "org.projectlombok:lombok:1.18.42"
+
+
+
+            }
+        }
+    }
+}
+
+
