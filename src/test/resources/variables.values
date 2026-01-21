@@ -2,3 +2,7 @@ url = https://demoqa.com/
 
 login = string
 password = string123!Z
+
+authLogin = login
+authPassword = password123!Z
+

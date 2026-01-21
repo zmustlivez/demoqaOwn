@@ -11,6 +11,7 @@ abstract public class BaseTest {
     public static void setUp(){
         Configuration.browser = "firefox";
         Configuration.headless = false;
+
     }
 
     @BeforeAll

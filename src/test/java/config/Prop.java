@@ -37,5 +37,17 @@ public class Prop {
         @Key("password")
         String getPassword();
 
+/*        @Key("token")
+        String getToken();
+
+        @Key("userId")
+        String getUserId();
+
+        @Key("authLogin")
+        String getAuthLogin();
+
+        @Key("authPassword")
+        String getAuthPassword();*/
+
     }
 }
