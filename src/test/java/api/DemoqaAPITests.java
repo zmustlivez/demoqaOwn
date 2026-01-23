@@ -4,11 +4,11 @@ import api.models.Book;
 import io.restassured.http.ContentType;
 import io.restassured.http.Header;
 import io.restassured.response.Response;
-import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
@@ -19,7 +19,6 @@ import java.util.Map;
 
 import static config.Prop.PROP;
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.blankOrNullString;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.core.IsEqual.equalTo;
 
@@ -96,8 +95,7 @@ public class DemoqaAPITests {
                 .statusCode(200)
                 .body("", equalTo(true))
                 .extract().response();
-
-        Assertions.assertEquals(response.jsonPath().get(""), true);
+        Assertions.assertEquals(true, response.jsonPath().get(""));
     }
 
     @Test
@@ -425,7 +423,8 @@ public class DemoqaAPITests {
                     .baseUri(PROP.getURL())
                     .contentType(ContentType.JSON)
                     .header("Authorization", "Bearer " + token)
-                    .delete("BookStore/v1/Books?UserId=" + userId)
+                    .queryParam("UserId", userId)
+                    .delete("BookStore/v1/Books")
                     .then().log().ifError()
                     .statusCode(204);
         }

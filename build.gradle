@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    id("org.gradle.test-retry") version "1.6.4"
+
 }
 
 group = 'sia'
@@ -31,10 +33,17 @@ testing {
                 annotationProcessor "org.projectlombok:lombok:1.18.42"
 
 
-
             }
         }
     }
 }
 
 
+test {
+//    useJUnitPlatform()
+    retry {
+    maxRetries = 2
+        maxFailures = 20
+        failOnPassedAfterRetry = true
+    }
+}
