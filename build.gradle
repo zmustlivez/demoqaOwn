@@ -15,7 +15,7 @@ repositories {
 //    toolchain {
 //        languageVersion = JavaLanguageVersion.of(17)
 //    }
-}
+//}
 
 testing {
     suites {
