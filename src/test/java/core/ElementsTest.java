@@ -2,14 +2,11 @@ package core;
 
 import demoqa.Elements.ButtonsPage;
 import demoqa.Elements.RadioButtonPage;
-import demoqa.MainPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static config.Prop.PROP;
-
 public class ElementsTest extends BaseTest {
-    private final MainPage mainPage = new MainPage(PROP.getURL());
+
 
     @Test
     public void checkTextBox() {
@@ -17,11 +14,11 @@ public class ElementsTest extends BaseTest {
         String email = "aa@bb.cc";
         String currentAddress = "123456 Current address";
         String permanentAddress = "123456 Permanent address";
-        Assertions.assertEquals(mainPage
+        Assertions.assertEquals(fullName + " " + email + " " + currentAddress + " " + permanentAddress,mainPage
                         .selectElements()
                         .openTextBox()
-                        .resultInputTextBox(fullName, email, currentAddress, permanentAddress),
-                fullName + " " + email + " " + currentAddress + " " + permanentAddress);
+                        .resultInputTextBox(fullName, email, currentAddress, permanentAddress)
+                );
     }
 
     @Test

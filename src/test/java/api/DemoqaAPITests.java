@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
@@ -313,11 +312,11 @@ public class DemoqaAPITests {
                 .get("/Account/v1/User/" + userId)
                 .then().log().ifError()
                 .statusCode(200)
-                .body("code", equalTo(code))
-                .body("message", equalTo(message))
+                .body("userId", equalTo(userId))
+//                .body("message", equalTo(message))
                 .extract().response();
 
-        Assertions.assertEquals(response.jsonPath().get("code"), code);
+        Assertions.assertEquals(response.jsonPath().get("userId"), userId);
         Assertions.assertEquals(response.jsonPath().get("message"), message);
     }
 
@@ -356,7 +355,7 @@ public class DemoqaAPITests {
                 .extract().response().jsonPath().getList("books");
 
         System.out.println(response);
-        Assertions.assertTrue(!response.isEmpty());
+        Assertions.assertFalse(response.isEmpty());
     }
 
     @Test
@@ -380,7 +379,7 @@ public class DemoqaAPITests {
                 .statusCode(201)
                 .extract().response().jsonPath().getList("books");
 
-        Assertions.assertTrue(!response.isEmpty());
+        Assertions.assertFalse(response.isEmpty());
     }
 
     @Test

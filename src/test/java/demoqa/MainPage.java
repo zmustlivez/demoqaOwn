@@ -17,6 +17,7 @@ public class MainPage {
     private final SelenideElement book = $x("//h5[text()='Book Store Application']");
 
     public MainPage(String url) {
+        if (url == null || url.isEmpty()) throw new RuntimeException("URL is empty!");
         Selenide.open(url);
     }
 

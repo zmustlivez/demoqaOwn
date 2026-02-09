@@ -1,0 +1,29 @@
+services:
+  # Ваши автотесты
+  api-tests:
+    build: .
+    environment:
+      - URL
+      - LOGIN
+      - PASSWORD
+      - REMOTE_URL=http://chrome:4444/wd/hub  # Добавь эту строку
+    depends_on:
+      chrome:
+        condition: service_healthy  # Ждет, пока хром ответит "ready"
+
+  # Браузер, в котором будут идти тесты
+  chrome:
+    image: selenium/standalone-chrome:latest
+    shm_size: 4gb
+    ports:
+      - "4444:4444"
+      - "7900:7900"
+    environment:
+      - SE_NODE_MAX_SESSIONS=5
+      - SE_NODE_OVERRIDE_MAX_SESSIONS=true
+      - START_XVFB=false # Немного ускоряет запуск в headless режиме
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4444/status"]
+      interval: 5s
+      timeout: 5s
+      retries: 10 # Даем хрому до 50 секунд на полный запуск

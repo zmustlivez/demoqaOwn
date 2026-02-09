@@ -24,7 +24,7 @@ testing {
 
             dependencies {
                 implementation 'org.junit.jupiter:junit-jupiter'
-                implementation 'com.codeborne:selenide:7.13.0'
+                implementation 'com.codeborne:selenide:6.19.1'
                 implementation "org.aeonbits.owner:owner:1.0.12"
                 implementation "io.rest-assured:rest-assured:6.0.0"
                 implementation "com.fasterxml.jackson.core:jackson-databind:2.20.1"
@@ -42,7 +42,7 @@ testing {
 test {
 //    useJUnitPlatform()
     retry {
-    maxRetries = 2
+    maxRetries = 1
         maxFailures = 20
         failOnPassedAfterRetry = true
     }
