@@ -1,6 +1,8 @@
 plugins {
     id 'java'
     id("org.gradle.test-retry") version "1.6.4"
+    id 'io.qameta.allure' version '3.0.1'
+
 
 }
 
@@ -25,6 +27,12 @@ testing {
             dependencies {
                 implementation 'org.junit.jupiter:junit-jupiter'
                 implementation 'com.codeborne:selenide:6.19.1'
+                runtimeOnly("org.aspectj:aspectjweaver:1.9.25.1")
+                // Source: https://mvnrepository.com/artifact/io.qameta.allure/allure-junit5
+                implementation("io.qameta.allure:allure-junit5:2.32.0")
+                implementation("io.qameta.allure:allure-commandline:2.32.0")
+                implementation("io.qameta.allure:allure-assertj:2.32.0")
+                implementation("io.qameta.allure:allure-java-commons:2.32.0")
                 implementation "org.aeonbits.owner:owner:1.0.12"
                 implementation "io.rest-assured:rest-assured:6.0.0"
                 implementation "com.fasterxml.jackson.core:jackson-databind:2.20.1"
