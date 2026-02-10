@@ -31,6 +31,7 @@ abstract public class BaseTest {
         if (remoteUrl != null && !remoteUrl.isEmpty()) {
             try {
                 ChromeOptions options = new ChromeOptions();
+                options.addArguments("--headless");
                 options.addArguments("--no-sandbox");
                 options.addArguments("--disable-dev-shm-usage");
                 options.addArguments("--remote-allow-origins=*");
