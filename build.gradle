@@ -12,11 +12,11 @@ repositories {
     mavenCentral()
 }
 
-java {
+/*java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(17)
     }
-}
+}*/
 
 testing {
     suites {
@@ -29,6 +29,8 @@ testing {
                 runtimeOnly("org.aspectj:aspectjweaver:1.9.25.1")
                 // Source: https://mvnrepository.com/artifact/io.qameta.allure/allure-junit5
                 implementation("io.qameta.allure:allure-junit5:2.32.0")
+                // Source: https://mvnrepository.com/artifact/io.qameta.allure/allure-selenide
+                implementation("io.qameta.allure:allure-selenide:2.32.0")
                 implementation("io.qameta.allure:allure-commandline:2.32.0")
                 implementation("io.qameta.allure:allure-assertj:2.32.0")
                 implementation("io.qameta.allure:allure-java-commons:2.32.0")
@@ -49,7 +51,7 @@ testing {
 test {
 //    useJUnitPlatform()
     retry {
-    maxRetries = 1
+    maxRetries = 0
         maxFailures = 20
         failOnPassedAfterRetry = true
     }
